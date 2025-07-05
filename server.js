@@ -10,7 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://jatin-wadhwani-portfolio.onrender.com/", // change to your actual frontend domain
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -20,12 +24,6 @@ process.on('uncaughtException', function (err) {
 
 
 app.use(express.static('public'));
-
-
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Contact Form Route
 app.post('/contact', (req, res) => {
