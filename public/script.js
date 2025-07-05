@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch('https://portfolio-backend-f9uv.onrender.com', {
+      const res = await fetch('https://jatin-portfolio-backend-5m2o.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
