@@ -7,16 +7,18 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Middleware
 app.use(cors({
-  origin: "https://jatin-wadhwani-portfolio.onrender.com/", // change to your actual frontend domain
+  origin: "https://jatin-wadhwani-portfolio.onrender.com", // change to your actual frontend domain
   methods: ["POST", "GET"],
   credentials: true
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 process.on('uncaughtException', function (err) {
   console.error('❌ Uncaught Exception:', err);
