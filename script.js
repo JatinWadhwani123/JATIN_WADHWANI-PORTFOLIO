@@ -35,13 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch('https://portfolio-backend-f9uv.onrender.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      fetch("https://portfolio-backend-f9uv.onrender.com/contact", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: name,
+    email: email,
+    subject: subject,
+    message: message,
+  }),
+})
 
       const data = await res.json();
 
