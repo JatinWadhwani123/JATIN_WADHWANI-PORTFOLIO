@@ -1,36 +1,20 @@
 const mysql = require('mysql2');
 require('dotenv').config();
 
-let db;
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
+});
 
-function handleConnection() {
-  db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT || 3306
-  });
-
-  db.connect((err) => {
-    if (err) {
-      console.error('❌ MySQL connection error:', err);
-      setTimeout(handleConnection, 2000); // Retry after 2 sec
-    } else {
-      console.log('✅ MySQL connected');
-    }
-  });
-
-  db.on('error', (err) => {
-    console.error('🔥 MySQL error:', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-      handleConnection(); // Reconnect on connection loss
-    } else {
-      throw err;
-    }
-  });
-}
-
-handleConnection();
+db.connect((err) => {
+  if (err) {
+    console.error('MySQL connection error:', err);
+  } else {
+    console.log('✅ MySQL connected');
+  }
+});
 
 module.exports = db;

@@ -66,14 +66,15 @@ app.post('/contact', (req, res) => {
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('❌ Email Send Error:', error.message);
-        return res.status(200).json({ message: 'Message saved, but failed to send email.' });
-      }
+  if (error) {
+    console.error('❌ Email Send Error:', error);
+    return res.status(200).json({ message: 'Message saved, but failed to send email.', error: error.message });
+  }
 
-      console.log('✅ Email sent:', info.response);
-      res.status(200).json({ message: 'Message sent successfully!' });
-    });
+  console.log('✅ Email sent:', info.response);
+  res.status(200).json({ message: 'Message sent successfully!' });
+});
+
   });
 });
 
@@ -85,4 +86,9 @@ app.get('/', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
+
+const path = require('path');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });

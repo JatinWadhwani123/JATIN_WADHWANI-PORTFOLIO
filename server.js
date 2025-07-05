@@ -86,6 +86,7 @@ app.post('/contact', (req, res) => {
 app.get('/', (req, res) => {
   res.send('✅ Backend is up and running!');
 });
+console.log("Loaded DB_USER:", process.env.DB_USER);
 
 const PORT = process.env.PORT || 5000;
 // Start server
