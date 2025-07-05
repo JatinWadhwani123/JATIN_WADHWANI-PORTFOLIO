@@ -35,13 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch('https://jatin-portfolio-backend-5m2o.onrender.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const res = await fetch("https://jatin-portfolio-backend-5m2o.onrender.com/contact", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: nameValue,
+    email: emailValue,
+    message: messageValue,
+  }),
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error(error));
 
       const data = await res.json();
 
