@@ -2,7 +2,7 @@
 
 // Typing Effect
 new TypeIt("#typing", {
-  strings: ["Full Stack Developer", "YouTuber", "GATE Qualified"],
+  strings: ["Full Stack Developer", "YouTuber", "Passionate Engineer"],
   speed: 100,
   breakLines: false,
   loop: true
