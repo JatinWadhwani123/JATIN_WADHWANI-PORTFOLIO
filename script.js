@@ -2,7 +2,7 @@
 
 // Typing Effect
 new TypeIt("#typing", {
-  strings: ["Full Stack Developer", "YouTuber", "GATE Qualified"],
+  strings: ["Full Stack Developer", "YouTuber", "Passionate Engineer"],
   speed: 100,
   breakLines: false,
   loop: true
@@ -72,3 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
 ScrollReveal().reveal("section h2", { origin: "top" });
 ScrollReveal().reveal("section p, .badge, .form-control, .btn", { origin: "bottom", interval: 100 });
 ScrollReveal().reveal(".project-card", { origin: "bottom", interval: 200 });
+
